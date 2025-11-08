@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattoria Da Mario - Montalcino | Cucina Toscana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header e Navigation */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=1200') center/cover;
+            height: 500px;
+            color: white;
+            position: relative;
+        }
+
+        nav {
+            background: rgba(139, 69, 19, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #f4a460;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-family: 'Georgia', serif;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+            font-style: italic;
+        }
+
+        /* Sezioni */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Sezione Benvenuto */
+        .benvenuto {
+            background: #f9f5f0;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .benvenuto p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Sezione Specialità */
+        .specialita-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .piatto-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .piatto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .piatto-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .piatto-content {
+            padding: 1.5rem;
+        }
+
+        .piatto-content h3 {
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .piatto-content p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Sezione Storia */
+        .storia {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .storia h2 {
+            color: white;
+        }
+
+        .storia-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .storia p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .anno {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            color: #f4a460;
+        }
+
+        /* Sezione Contatti */
+        .contatti {
+            background: #f9f5f0;
+            padding: 4rem 2rem;
+        }
+
+        .contatti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contatto-box {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contatto-box h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contatto-box p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contatto-box a {
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contatto-box a:hover {
+            color: #D2691E;
+            text-decoration: underline;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta {
+            background: #8B4513;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .btn-prenota {
+            display: inline-block;
+            background: #f4a460;
+            color: white;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-prenota:hover {
+            background: #D2691E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c1810;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f4a460;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .specialita-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#storia">Chi Siamo</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="hero-content">
+            <h1>Trattoria Da Mario</h1>
+            <p>Sapori Autentici della Toscana dal 1978</p>
+        </div>
+    </header>
+
+    <!-- Benvenuto -->
+    <section class="benvenuto">
+        <div class="container">
+            <h2>Benvenuti nella Nostra Trattoria</h2>
+            <p>
+                Nel cuore di Montalcino, tra le colline del Brunello, la Trattoria Da Mario vi accoglie 
+                con il calore di una vera famiglia toscana. Qui la tradizione si tramanda di generazione 
+                in generazione, con ricette autentiche e ingredienti genuini del territorio.
+            </p>
+            <p>
+                Ogni piatto racconta una storia, ogni sapore è un viaggio nella vera cucina toscana. 
+                Venite a scoprire l'essenza della nostra terra.
+            </p>
+        </div>
+    </section>
+
+    <!-- Specialità -->
+    <section class="container" id="menu">
+        <h2>Le Nostre Specialità</h2>
+        <div class="specialita-grid">
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600" alt="Pici cacio e pepe" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Pici Cacio e Pepe</h3>
+                    <p>Pasta fresca fatta in casa secondo la tradizione senese, condita con pecorino toscano DOP e pepe nero.</p>
+                </div>
+            </div>
+
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1633964913295-ceb43826d7eb?w=600" alt="Pappardelle al cinghiale" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Pappardelle al Cinghiale</h3>
+                    <p>Pappardelle larghe con ragù di cinghiale cotto lentamente nel vino Brunello di Montalcino.</p>
+                </div>
+            </div>
+
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600" alt="Bistecca fiorentina" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Bistecca alla Fiorentina</h3>
+                    <p>Taglio di carne chianina da 1kg, cotta alla brace. Un classico intramontabile della cucina toscana.</p>
+                </div>
+            </div>
+
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" alt="Ribollita" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Ribollita</h3>
+                    <p>Zuppa tradizionale toscana con cavolo nero, fagioli cannellini e pane raffermo. Comfort food per eccellenza.</p>
+                </div>
+            </div>
+
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=600" alt="Panzanella" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Panzanella</h3>
+                    <p>Insalata estiva con pane toscano, pomodori maturi, cipolla rossa e basilico fresco dell'orto.</p>
+                </div>
+            </div>
+
+            <div class="piatto-card">
+                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600" alt="Cantuccini" class="piatto-img">
+                <div class="piatto-content">
+                    <h3>Cantuccini e Vin Santo</h3>
+                    <p>Biscotti alle mandorle da inzuppare nel nostro Vin Santo artigianale. Il dolce finale perfetto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Storia -->
+    <section class="storia" id="storia">
+        <div class="container">
+            <h2>La Nostra Storia</h2>
+            <div class="storia-content">
+                <div class="anno">Dal 1978</div>
+                <p>
+                    La Trattoria Da Mario nasce dalla passione di Mario Rossi e sua moglie Anna per la cucina 
+                    toscana autentica. Quello che iniziò come un piccolo locale a conduzione familiare è 
+                    diventato negli anni un punto di riferimento per chi cerca i veri sapori della tradizione.
+                </p>
+                <p>
+                    Oggi la trattoria è gestita dalla seconda generazione, con il figlio Luca in cucina che 
+                    continua a preparare i piatti seguendo le ricette della nonna, utilizzando solo ingredienti 
+                    locali e di stagione. La nostra filosofia è semplice: rispetto per la tradizione, 
+                    amore per la qualità, e l'ospitalità che solo una vera famiglia toscana sa dare.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Vieni a Trovarci</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Prenota il tuo tavolo e vivi un'esperienza autentica</p>
+        <a href="tel:+390577846789" class="btn-prenota">Prenota Ora</a>
+    </section>
+
+    <!-- Contatti -->
+    <section class="contatti" id="contatti">
+        <div class="container">
+            <h2>Dove Siamo</h2>
+            <div class="contatti-grid">
+                <div class="contatto-box">
+                    <div class="icon">📍</div>
+                    <h3>Indirizzo</h3>
+                    <p>Via del Corso 24<br>53024 Montalcino (SI)<br>Toscana, Italia</p>
+                </div>
+
+                <div class="contatto-box">
+                    <div class="icon">📞</div>
+                    <h3>Contatti</h3>
+                    <p>
+                        Tel: <a href="tel:+390577846789">+39 0577 846789</a><br>
+                        Email: <a href="mailto:info@trattoriadamario.it">info@trattoriadamario.it</a>
+                    </p>
+                </div>
+
+                <div class="contatto-box">
+                    <div class="icon">🕐</div>
+                    <h3>Orari</h3>
+                    <p>
+                        Mar - Dom<br>
+                        12:00 - 15:00<br>
+                        19:00 - 22:30<br><br>
+                        <strong>Lunedì: Chiuso</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Trattoria Da Mario - Montalcino. Tutti i diritti riservati.</p>
+        <p>Cucina Toscana Tradizionale dal 1978</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">TripAdvisor</a>
+        </div>
+    </footer>
+</body>
+</html>
